@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MovieCard, { type MovieCardProps } from "../components/MovieCard";
+import MovieCard from "../components/MovieCard";
 import {
   searchMovies,
   getPopularMovies,
