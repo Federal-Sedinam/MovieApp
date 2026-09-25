@@ -2,7 +2,7 @@
 
 A movie browsing app built with React, TypeScript and Vite. Browse what's popular, search the catalogue, and keep a personal list of favorites that persists in your browser.
 
-**Live demo:** [movie-database-federal.netlify.app](https://movie-database-federal.netlify.app)
+**[Live demo →](https://movie-database-federal.netlify.app)**
 
 Movie data is provided by [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
