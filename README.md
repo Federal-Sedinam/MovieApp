@@ -88,10 +88,6 @@ The app deploys to Netlify from `main`. `netlify.toml` holds the build command, 
 
 `VITE_API_KEY` and `VITE_BASE_URL` are set as environment variables in the Netlify site settings, since `.env` isn't committed.
 
-## Known issues
-
-- In development only, favorites are cleared on refresh. The effect that saves to `localStorage` runs on the initial mount with an empty array, and React StrictMode's double-mounting lets that empty write be read back before the restored state commits. Production builds run effects once and are unaffected.
-
 ## Acknowledgements
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
