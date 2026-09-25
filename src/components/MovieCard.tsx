@@ -2,21 +2,33 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "../css/MovieCard.css";
+import { useMovieContext } from "../contexts/MovieContext";
+import type { MovieResult } from "../services/api";
 
 export interface MovieCardProps {
-  movie: {
-    url?: string;
-    title: string;
-    release_date: string;
-    id: number;
-    poster_path: string;
-  };
+  movie: MovieResult;
 }
+
+// export interface MovieCardProps {
+//   movie: {
+//     url?: string;
+//     title: string;
+//     release_date: string;
+//     id: number;
+//     poster_path: string;
+//   };
+// }
 
 function MovieCard(props: MovieCardProps): React.ReactElement {
   const { movie } = props;
+  const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext();
+  const favorite = isFavorite(movie.id);
 
-  function onFavoriteClick() {}
+  const onFavoriteClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    if (favorite) removeFromFavorites(movie.id);
+    else addToFavorites(movie);
+  };
 
   return (
     <div className="movie-card">
@@ -27,7 +39,10 @@ function MovieCard(props: MovieCardProps): React.ReactElement {
         />
 
         <div className="movie-overlay">
-          <button className="favorite-btn" onClick={onFavoriteClick}>
+          <button
+            className={`favorite-btn ${favorite ? "active" : ""}`}
+            onClick={onFavoriteClick}
+          >
             <FontAwesomeIcon icon={faHeart} />
           </button>
         </div>
